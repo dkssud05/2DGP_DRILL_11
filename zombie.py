@@ -38,7 +38,8 @@ class Zombie:
         self.removed = False
 
     def get_bb(self):
-        return self.x - 100, self.y - 100, self.x + 100, self.y + 100
+        half_size = self.size // 2
+        return self.x - half_size, self.y - half_size, self.x + half_size, self.y + half_size
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
