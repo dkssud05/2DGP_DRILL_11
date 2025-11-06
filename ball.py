@@ -15,6 +15,8 @@ class Ball:
         self.xv = throwin_speed * math.cos(math.radians(throwin_angle))  # m/s
         self.yv = abs(throwin_speed * math.sin(math.radians(throwin_angle)))   # m/s
         self.stopped = True if throwin_speed == 0.0 else False
+        self.hit_count = 0
+        self.size = 10
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -31,6 +33,7 @@ class Ball:
         self.yv -= GRAVITY * game_framework.frame_time  # m/s
 
     def get_bb(self):
+        half_size = self.size // 2
         return self.x - 10, self.y - 10, self.x + 10, self.y + 10
 
     def handle_collision(self, group, other):
