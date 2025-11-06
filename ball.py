@@ -31,7 +31,6 @@ class Ball:
         self.yv -= GRAVITY * game_framework.frame_time  # m/s
 
     def get_bb(self):
-        half_size = self.size // 2
         return self.x - 10, self.y - 10, self.x + 10, self.y + 10
 
     def handle_collision(self, group, other):
@@ -39,3 +38,5 @@ class Ball:
             game_world.remove_object(self)
         elif group == 'grass:ball':
             self.stopped = True
+        elif group == 'zombie:ball':
+            game_world.remove_object(self)
